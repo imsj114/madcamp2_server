@@ -21,8 +21,9 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 80;
 
-app.use('/api', require('./routes'));
-app.use(express.static('images'));
+app.use('/', require('./routes'));
+app.use(express.static('uploads'));
+
 
 var server = app.listen(port, function(){
     console.log("Express server has started on port " + port)

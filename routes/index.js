@@ -3,7 +3,8 @@ const router = express.Router();
 const User = require('../models/user');
 const bodyParser = require('body-parser');
 
-router.post('/login', function(req, res){
+
+router.post('/api/login', function(req, res){
     console.log('/login');
     User.findOne({uid: req.body.uid}, function(err, user){
         console.log(user);
@@ -13,7 +14,7 @@ router.post('/login', function(req, res){
     });
 });
 
-router.post('/register', function(req, res){
+router.post('/api/register', function(req, res){
     console.log('/register');
     User.findOne({ uid: req.body.uid }, function(err, user){
         if(err) return res.status(500).json({error: err});
@@ -24,7 +25,7 @@ router.post('/register', function(req, res){
     });
 });
 
-router.get('/contacts/:uid', function(req, res){
+router.get('/api/contacts/:uid', function(req, res){
     console.log('/contacts');
     User.findOne({ uid: req.params.uid }, function(err, user){
         if(err) return res.status(500).json({error: err});
@@ -33,7 +34,7 @@ router.get('/contacts/:uid', function(req, res){
     });
 });
 
-router.get('/images/:uid', function(req, res){
+router.get('/api/images/:uid', function(req, res){
     console.log('/images');
     User.findOne({ uid: req.params.uid }, function(err, user){
         if(err) return res.status(500).json({error: err});
@@ -42,7 +43,7 @@ router.get('/images/:uid', function(req, res){
     });
 })
 
-router.get('/users', function(req, res){
+router.get('/api/users', function(req, res){
     console.log('/users');
     User.find(function(err, users){
         if(err) return res.status(500).json({error: err});
