@@ -9,7 +9,7 @@ var contactSchema = new Schema({
 
 var userSchema = new Schema({
     uid: { type: String, unique: true, required: true },
-    name: { type: String, required: true},
+    name: { type: String },
     email: String,
     contacts: [contactSchema],
     images: [{ type: String }]
